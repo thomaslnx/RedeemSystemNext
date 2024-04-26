@@ -12,7 +12,7 @@ function SearchAllRewards () {
   return data
 }
 
-const Users = ({ users }) => {
+const Rewards = () => {
   const { data: allRewardsSearch, isLoading: allRewardsLoading, error: allRewardsError } = useSWR(allRewards, searchAllRewards)
 
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -24,8 +24,6 @@ const Users = ({ users }) => {
   const handleInputChange = (e: ChangeEvent) => {
     setUserId(e.target.value)
   }
-
-  console.log('allRewardsSearch value: ', allRewardsSearch)
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-between p-24 h-full">
@@ -90,4 +88,4 @@ const Users = ({ users }) => {
   )
 }
 
-export default Users
+export default Rewards
