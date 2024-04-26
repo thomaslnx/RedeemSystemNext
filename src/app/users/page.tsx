@@ -12,7 +12,12 @@ const searchAllUsers = (allUsers) => fetch(allUsers).then(res => res.json())
 const searchUserById = (userById) => fetch(userById).then(res => res.json())
 
 function SearchUserById (user) {
-  const { data: userByIdSearch, isLoading, error } = useSWR('http://localhost:3001/users/' + user, searchUserById)
+  const { data: userByIdSearch, isLoading, error: userByIdError } = useSWR('http://localhost:3001/users/' + user, searchUserById)
+  return data
+}
+
+function SearchAllUsers () {
+  const { data: allUsersSearch, isLoading: allUsersLoading, error: allUsersError } = useSWR(allUsers, searchAllUsers)
   return data
 }
 
@@ -20,9 +25,10 @@ const Users = ({ users }) => {
   const { data: allUsersSearch, isLoading: allUsersLoading, error: allUsersError } = useSWR(allUsers, searchAllUsers)
   const [userId, setUserId] = useState<number>()
   const [userSearched, setUserSearched] = useState()
-  const { data: userByIdSearch, isLoading, error } = useSWR('http://localhost:3001/users/' + userId, searchUserById)
+  const { data: userByIdSearch, isLoading, error: userByIdError } = useSWR('http://localhost:3001/users/' + userId, searchUserById)
 
   useEffect(() => {}, [userId, userSearched])
+
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setUserId(e.currentTarget.elements[0].value)
@@ -57,7 +63,29 @@ const Users = ({ users }) => {
           {
             allUsersLoading ? (
               <p> Is loading... </p>
-            ) : userByIdSearch !== undefined ? userByIdSearch.map(user => (
+            ) : userByIdSearch === undefined || userByIdSearch.length === 0 ? allUsersSearch.map(user => (
+              <div key={user.id} className="flex w-full items-center border-y-[1px] border-y-[#374151] pl-[30px] mb-[-1px]">
+                  <FaUserAlt
+                    color='#9CA3AF'
+                    size={40}
+                    style={{
+                      marginRight: '20px'
+                    }}
+                  />
+                <ul key={user.id} className="flex flex-col justify-center h-[90px] ">
+                  <li className="text-[#cccccc] text-[24px] font-bold leading-[20px]">
+                    {user.name}
+                  </li>
+                  <li className="text-[#cccccc] text-[12px] leading-[20px]">
+                    {user.username}
+                  </li>
+                  <li className="text-[#cccccc] text-[12px] leading-[20px]">
+                    {user.email}
+                  </li>
+                </ul>
+
+              </div>
+            )) : userByIdSearch.map(user => (
               <div key={user.id} className="flex w-full items-center border-y-[1px] border-y-[#374151] pl-[30px] mb-[-1px]">
                     <FaUserAlt
                       color='#9CA3AF'
@@ -77,32 +105,8 @@ const Users = ({ users }) => {
                       {user.email}
                     </li>
                   </ul>
-
                 </div>
-            )) :
-            allUsersSearch.map(user => (
-                <div key={user.id} className="flex w-full items-center border-y-[1px] border-y-[#374151] pl-[30px] mb-[-1px]">
-                    <FaUserAlt
-                      color='#9CA3AF'
-                      size={40}
-                      style={{
-                        marginRight: '20px'
-                      }}
-                    />
-                  <ul key={user.id} className="flex flex-col justify-center h-[90px] ">
-                    <li className="text-[#cccccc] text-[24px] font-bold leading-[20px]">
-                      {user.name}
-                    </li>
-                    <li className="text-[#cccccc] text-[12px] leading-[20px]">
-                      {user.username}
-                    </li>
-                    <li className="text-[#cccccc] text-[12px] leading-[20px]">
-                      {user.email}
-                    </li>
-                  </ul>
-
-                </div>
-              ))
+            ))
             }
         </div>
       </div>
