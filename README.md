@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Redeem Moderation System - Frontend Part
 
-## Getting Started
+This project aims to evaluate my skills as a full-stack software engineer for a hiring company process.
 
-First, run the development server:
+<p align="center">
+  <img src="./readme-assets/frontend.png">
+</p>
 
-```bash
+# Project Goal
+
+This part of the entire project is the frontend send to the backend data.
+
+
+## Project Tech Stack
+
+In this project, I used some rola-related tech stacks to achieve the challenge goal. Listed below:
+
+- NextJS 14;
+- Typescript;
+- SWR;
+- Tailwind CSS;
+
+## How to run
+
+After make the clone of this repo and enter inside his folder, run the command: <br>
+```sh
+npm run install
+```
+this command will install all requeride dependencies of the project.
+
+after that run: <br>
+```sh
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+to start the project.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+**OBS:** Is possible the need to be created data inside the container's database for displayng in the application.
+     To achieve this you can use the Swagger interface on the backend part. The instructions are in the related
+     repo README file.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Backend Repository url: 
+- Backend - [backend-repo](https://github.com/thomaslnx/RedeemSystemNode)
 
-## Learn More
+## Stay in touch
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Author - Marcos de Moura Silva
+- Github - [thomaslnx](https://github.com/thomaslnx)
+- Twitter - [@thomaslnx](https://twitter.com/thomaslnx)
