@@ -56,7 +56,7 @@ const Dashboard = () => {
               </Link>
             </li>
             <li className="flex justify-center w-full h-[45px] rounded-[6px] px-[8px] hover:bg-[#4D5C6A]">
-              <Link className="flex w-full h-full justify-start items-center text-[#E4E6EA]" href="http://">
+              <Link className="flex w-full h-full justify-start items-center text-[#E4E6EA]" href="/redemptions">
                 <BiMoneyWithdraw
                   color='#9CA3AF'
                   size={20}
