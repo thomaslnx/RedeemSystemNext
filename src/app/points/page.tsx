@@ -87,30 +87,45 @@ const Points = () => {
                 </ul>
 
               </div>
-            )) : userPointsByIdSearch.map(userPoint => (
-              <div key={userPoint.id} className="flex w-full items-center border-y-[1px] border-y-[#374151] pl-[30px] mb-[-1px]">
-                    <FaUserAlt
-                      color='#9CA3AF'
-                      size={40}
-                      style={{
-                        marginRight: '20px'
-                      }}
-                    />
-                  <ul key={userPoint.id} className="flex flex-col justify-center h-[90px] ">
-                    <li className="text-[#cccccc] text-[24px] font-bold leading-[20px] mb-[8px]">
-                      {userPoint.name}
-                    </li>
-                    <li className="flex flex-row text-[#cccccc] text-[12px] leading-[15px]">
-                      <p className="mr-[5px]">Email: </p>
-                      {userPoint.email}
-                    </li>
-                    <li className="flex flex-row text-[#cccccc] text-[12px] leading-[15px]">
-                      <p className="mr-[5px]">Points balance: </p>
-                      {userPoint.points_balance}
-                    </li>
-                  </ul>
-                </div>
-            ))
+            )) : userPointsByIdSearch.length > 0 ? userPointsByIdSearch.map(userPoint => (
+                  <div key={userPoint.id} className="flex w-full items-center border-y-[1px] border-y-[#374151] pl-[30px] mb-[-1px]">
+                        <FaUserAlt
+                          color='#9CA3AF'
+                          size={40}
+                          style={{
+                            marginRight: '20px'
+                          }}
+                        />
+                      <ul key={userPoint.id} className="flex flex-col justify-center h-[90px] ">
+                        <li className="text-[#cccccc] text-[24px] font-bold leading-[20px] mb-[8px]">
+                          {userPoint.name}
+                        </li>
+                        <li className="flex flex-row text-[#cccccc] text-[12px] leading-[15px]">
+                          <p className="mr-[5px]">Email: </p>
+                          {userPoint.email}
+                        </li>
+                        <li className="flex flex-row text-[#cccccc] text-[12px] leading-[15px]">
+                          <p className="mr-[5px]">Points balance: </p>
+                          {userPoint.points_balance}
+                        </li>
+                      </ul>
+                    </div>
+                  )) : (
+                    <div className="flex w-full items-center border-y-[1px] border-y-[#374151] pl-[30px] mb-[-1px]">
+                        <FaUserAlt
+                          color='#9CA3AF'
+                          size={40}
+                          style={{
+                            marginRight: '20px'
+                          }}
+                        />
+                      <ul className="flex flex-col justify-center h-[90px] ">
+                        <li className="text-[#cccccc] text-[24px] font-bold leading-[20px] mb-[8px]">
+                          <p className="mr-[5px]">User not found!</p>
+                        </li>
+                      </ul>
+                    </div>
+                  )
             }
         </div>
       </div>
